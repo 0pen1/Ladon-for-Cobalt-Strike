@@ -18,7 +18,119 @@ Ladon for Cobalt Strike
 
 ### 程序简介
 
-Ladon一款用于大型网络渗透的多线程插件化综合扫描神器，含端口扫描、服务识别、网络资产、密码爆破、高危漏洞检测以及一键GetShell，支持批量A段/B段/C段以及跨网段扫描，支持URL、主机、域名列表扫描。7.0版本内置83个功能模块,外部模块18个,通过多种协议以及方法快速获取目标网络存活主机IP、计算机名、工作组、共享资源、网卡地址、操作系统版本、网站、子域名、中间件、开放服务、路由器、数据库等信息，漏洞检测包含MS17010、SMBGhost、Weblogic、ActiveMQ、Tomcat、Struts2系列等，密码爆破12种含数据库(Mysql、Oracle、MSSQL)、FTP、SSH、VNC、Windows(LDAP、SMB/IPC、WMI、SmbHash、WmiHash、Winrm)、BasicAuth、Tomcat、Weblogic、Rar等，远程执行命令包含(wmiexe/psexec/atexec/sshexec/jspshell),Web指纹识别模块可识别75种（Web应用、中间件、脚本类型、页面类型）等，可高度自定义插件POC支持.NET程序集、DLL(C#/Delphi/VC)、PowerShell等语言编写的插件,支持通过配置INI批量调用任意外部程序或命令，EXP生成器可一键生成漏洞POC快速扩展扫描能力。Ladon支持Cobalt Strike插件化扫描快速拓展内网进行横向移动。
+
+**Ladon**一款用于大型网络渗透的**多线程插件**化综合**扫描神器**，含**端口扫描、服务识别、网络资产、密码爆破、高危漏洞检测**以及**一键GetShell**，支持批量**A段/B段/C段**以及**跨网段扫描**，支持**URL、主机、域名列表扫描**。
+
+7.0版本内置**83个功能模块**,**外部模块18个**,通过多种协议以及方法快速获取**目标网络存活主机IP、计算机名、工作组、共享资源、网卡地址、操作系统版本、网站、子域名、中间件、开放服务、路由器、数据库等信息，漏洞检测包含MS17010、SMBGhost、Weblogic、ActiveMQ、Tomcat、Struts2系列**等，密码爆破**12种含数据库**(**Mysql、Oracle、MSSQL)、FTP、SSH、VNC、Windows(LDAP、SMB/IPC、WMI、SmbHash、WmiHash、Winrm)、BasicAuth、Tomcat、Weblogic、Rar**等，远程执行命令包含(**wmiexe/psexec/atexec/sshexec/jspshell**),Web指纹识别模块可识别75种（**Web应用、中间件、脚本类型、页面类型**）等，可高度自定义插件POC支持.NET程序集、DLL(C#/Delphi/VC)、PowerShell等语言编写的插件,支持通过**配置INI**批量调用**任意外部程序**或**命令**，EXP生成器可**一键生成漏洞POC**快速扩展扫描能力。Ladon支持Cobalt Strike插件化扫描快速拓展**内网进行横向移动**。
+
+
+## 目录
+
+```
+0x00 资产扫描、指纹识别、服务识别、存活主机、端口扫描
+0x01 暴力破解/网络认证/弱口令/密码爆破/数据库/网站后台/登陆口/系统登陆
+0x03 漏洞检测/漏洞利用/Poc/Exp
+0x04 FTP下载、HTTP下载
+0x05 加密解密(HEX/Base64)
+0x06 网络嗅探
+0x07 密码读取
+0x08 信息收集
+0x09 远程执行(psexec/wmiexec/atexec/sshexec)
+0x10 提权降权
+0x11 其它功能
+0x12 反弹Shell
+```
+
+## 子目录
+
+```
+Ladon for Cobalt Strike
+001 多协议探测存活主机 （IP、机器名、MAC地址、制造商）
+002 多协议识别操作系统 （IP、机器名、操作系统版本、开放服务）
+003 扫描存活主机
+004 ICMP扫描存活主机
+005 扫描SMB漏洞MS17010 （IP、机器名、漏洞编号、操作系统版本）
+006 SMBGhost漏洞检测 CVE-2020-0796 （IP、机器名、漏洞编号、操作系统版本）
+007 扫描Web信息/Http服务
+008 扫描C段站点URL域名
+009 扫描C段站点URL域名
+010 扫描子域名、二级域名
+011 域名解析IP、主机名解析IP
+012 域内机器信息获取
+013 扫描C段端口、指定端口扫描
+014 扫描C段WEB以及CMS（75种Web指纹识别）
+015 扫描思科设备
+016 枚举Mssql数据库主机 （数据库IP、机器名、SQL版本）
+017 枚举网络共享资源 （域、存活IP、共享路径）
+018 扫描LDAP服务器
+019 扫描FTP服务器
+020 445端口 SMB密码爆破(Windows)
+021 135端口 Wmi密码爆破(Windowns)
+022 389端口 LDAP服务器、AD域密码爆破(Windows)
+023 5985端口 Winrm密码爆破(Windowns)
+024 445端口 SMB NTLM HASH爆破(Windows)
+025 135端口 Wmi NTLM HASH爆破(Windows)
+026 22端口 SSH密码爆破(Linux)
+027 1433端口 Mssql数据库密码爆破
+028 1521端口 Oracle数据库密码爆破
+029 3306端口 Mysql数据库密码爆破
+030 7001端口 Weblogic后台密码爆破
+031 5900端口 VNC远程桌面密码爆破
+032 21端口 Ftp服务器密码爆破
+033 8080端口 Tomcat后台登陆密码爆破
+034 Web端口 401基础认证密码爆破
+035 445端口 Impacket SMB密码爆破(Windowns)
+036 445端口 IPC密码爆破(Windowns)
+037 SMB漏洞检测(CVE-2017-0143/CVE-2017-0144)
+038 Weblogic漏洞检测(CVE-2019-2725/CVE-2018-2894)
+039 PhpStudy后门检测(phpstudy 2016/phpstudy 2018)
+040 ActiveMQ漏洞检测(CVE-2016-3088)
+041 Tomcat漏洞检测(CVE-2017-12615)
+042 Weblogic漏洞利用(CVE-2019-2725)
+043 Tomcat漏洞利用(CVE-2017-12615)
+044 Struts2漏洞检测(S2-005/S2-009/S2-013/S2-016/S2-019/S2-032/DevMode)
+045 HTTP下载
+046 Ftp下载
+047 Hex加密解密
+048 Base64加密解密
+049 Ftp密码嗅探
+050 HTTP密码嗅探
+051 网络嗅探
+052 读取IIS站点密码、网站路径
+DumpLsass内存密码
+053 进程详细信息
+054 获取命令行参数
+055 获取渗透基础信息
+056 .NET & PowerShell版本
+057 运行时版本&编译环境
+445端口 PSEXEC远程执行命令（交互式）
+058 135端口 WmiExec远程执行命令 （非交互式）
+059 445端口 AtExec远程执行命令（非交互式）
+060 22端口 SshExec远程执行命令（非交互式）
+061 JspShell远程执行命令（非交互式）
+062 WebShell远程执行命令（非交互式）
+063 BypassUac 绕过UAC执行,支持Win7-Win10
+064 GetSystem 提权或降权运行程序
+065 Runas 模拟用户执行命令
+066 一键启用.net 3.5
+067 获取内网站点HTML源码
+068 检测后门
+069 获取本机内网IP与外网IP
+070 一键迷你WEB服务器
+071 反弹TCP NC Shell
+072 反弹TCP MSF Shell
+073 反弹TCP MSF MET Shell
+074 反弹HTTP MSF MET Shell
+075 反弹HTTPS MSF MET Shell
+076 反弹TCP CMD & PowerShell Shell
+077 反弹UDP Cmd & PowerShell Shell
+078 RDP桌面会话劫持（无需密码）
+079 OXID定位多网卡主机
+080 查看用户最近访问文件
+081 添加注册表Run启动项
+082 AT计划执行程序(无需时间)(system权限)
+083 SC服务加启动项&执行程序(system权限）
+```
 
 ### 使用文档
 
